@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use diagnostics;
+use FindBin;
+use lib "$FindBin::RealBin";
+
+
+eval {
+    require Mailfull::Cli::Command;
+};
+
+unless ($@) {
+    Mailfull::Cli::Command->_switcher;
+} else {
+    die "$! cannot load library.";
+}
+
