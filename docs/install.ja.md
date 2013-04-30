@@ -29,13 +29,13 @@
 
 ### Postfix と Dovecot の設定
 
-    # cd /home/mailfull/etc/main.cf.sample /etc/postfix/main.cf
+    # cp /home/mailfull/etc/main.cf.sample /etc/postfix/main.cf
 
   必要があれば、`master.cf` を編集し SMTP-AUTH を有効にして下さい。
 
-    # cp -a dovecot.conf.sample.2 /etc/dovecot/dovecot.conf
+    # cp dovecot.conf.sample.2 /etc/dovecot/dovecot.conf
        <or>
-    # cp -a dovecot.conf.sample.1 /etc/dovecot.conf
+    # cp dovecot.conf.sample.1 /etc/dovecot.conf
 
 ### Postfix と Dovecot を起動
 
