@@ -4,7 +4,7 @@ Mailfull - A configuration tool for virtual domain email
 要件
 ----
 
-  * Postfix 2.x.x
+  * Postfix >= 2.3
   * Dovecot 1.x.x or 2.x.x
   * Perl 5.x.x
     * Digest::SHA1 module
