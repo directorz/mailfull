@@ -57,6 +57,7 @@ smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem
 smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem
 #smtpd_tls_CAfile = 
 smtpd_tls_session_cache_database = btree:/etc/postfix/smtpd_scache
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 
 ___EOL___
 
