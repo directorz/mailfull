@@ -35,6 +35,8 @@ ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
 
 #disable_plaintext_auth = no
 
+#ssl_protocols = !SSLv2 !SSLv3
+
 auth default {
   mechanisms = plain login
 
