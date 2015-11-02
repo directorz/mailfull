@@ -65,6 +65,8 @@ sub load {
 
         name_userforward	=> ".forward",
 
+        name_disable		=> ".vdomaindisable",
+
         path_lockfile		=> "/tmp/mailfull_lockfile",
     };
 

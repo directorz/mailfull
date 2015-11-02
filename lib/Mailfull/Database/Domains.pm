@@ -20,6 +20,9 @@ sub generate {
     # generate lines
     my @lines = ();
     foreach my $domain (@domains, @aliasdomains) {
+        if (-f "$Mailfull::Core::Cfg->{dir_data}/$domain/$Mailfull::Core::Cfg->{name_disable}") {
+            next;
+        }
         push @lines, $domain . " virtual";
     }
 

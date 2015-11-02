@@ -167,6 +167,50 @@ sub vdomainlist {
     }
 }
 
+sub vdomaindisable {
+    my $self = shift;
+    my ($domain) = @_;
+
+    ### argcheck
+    if ( ! defined($domain) || $domain eq "" ) {
+        print STDERR Mailfull::Cli::Usage->vdomainadd;
+        exit 1;
+    }
+
+    ### go
+    my $ref_ret = Mailfull::Core->domain_disable($domain);
+    my $retval = $$ref_ret{'retval'};
+
+    if ( $retval == 1 ) {
+        exit 0;
+    } else {
+        print STDERR Mailfull::Common::Error->get_message($retval) . "\n";
+        exit $retval;
+    }
+}
+
+sub vdomainenable {
+    my $self = shift;
+    my ($domain) = @_;
+
+    ### argcheck
+    if ( ! defined($domain) || $domain eq "" ) {
+        print STDERR Mailfull::Cli::Usage->vdomainadd;
+        exit 1;
+    }
+
+    ### go
+    my $ref_ret = Mailfull::Core->domain_enable($domain);
+    my $retval = $$ref_ret{'retval'};
+
+    if ( $retval == 1 ) {
+        exit 0;
+    } else {
+        print STDERR Mailfull::Common::Error->get_message($retval) . "\n";
+        exit $retval;
+    }
+}
+
 
 ##############################
 # user

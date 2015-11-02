@@ -169,6 +169,68 @@ sub domains_get {
 }
 
 
+sub domain_disable {
+    my $self = shift;
+    my ($domain) = @_;
+
+    Mailfull::Utils::Locker->my_lock;
+
+    my %ret;
+    $ret{'retval'} = eval {
+        ### check
+        unless ( Mailfull::Utils::Check->domain_correct_format($domain) ) {
+            return 101;
+        }
+        if ( !Mailfull::Utils::Check->domain_exist($domain) ) {
+            return 102;
+        }
+        ### go
+        Mailfull::Utils::File->touch("$Mailfull::Core::Cfg->{dir_data}/$domain/$Mailfull::Core::Cfg->{name_disable}", $Mailfull::Core::Cfg->{umask_data});
+
+        return 1;
+    };
+
+    if ($@) {
+        print STDERR $@;
+        $ret{'retval'} = 999;
+    }
+
+    Mailfull::Utils::Locker->my_unlock;
+
+    return \%ret;
+}
+
+sub domain_enable {
+    my $self = shift;
+    my ($domain) = @_;
+
+    Mailfull::Utils::Locker->my_lock;
+
+    my %ret;
+    $ret{'retval'} = eval {
+        ### check
+        unless ( Mailfull::Utils::Check->domain_correct_format($domain) ) {
+            return 101;
+        }
+        if ( !Mailfull::Utils::Check->domain_exist($domain) ) {
+            return 102;
+        }
+        ### go
+        Mailfull::Utils::File->rm("$Mailfull::Core::Cfg->{dir_data}/$domain/$Mailfull::Core::Cfg->{name_disable}");
+
+        return 1;
+    };
+
+    if ($@) {
+        print STDERR $@;
+        $ret{'retval'} = 999;
+    }
+
+    Mailfull::Utils::Locker->my_unlock;
+
+    return \%ret;
+}
+
 ##############################
 # user
 ##############################
